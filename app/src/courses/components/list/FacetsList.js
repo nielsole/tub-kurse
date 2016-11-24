@@ -2,9 +2,9 @@
 // have any specialized logic.
 
 export default {
-  name : 'usersList',
+  name : 'facetsList',
   config : {
-    bindings         : {  users: '<', selected : '<', showDetails : '&onSelected' },
+    bindings         : {  facets: '<', selected : '<', showDetails : '&onSelected' },
     templateUrl      : 'src/courses/components/list/UsersList.html'
   }
 };

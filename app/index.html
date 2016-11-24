@@ -30,18 +30,18 @@
     <md-sidenav class="md-whiteframe-4dp" md-is-locked-open="$mdMedia('gt-sm')"
                 md-component-id="left" ng-click="app.toggleList()">
       <!-- Custom UsersList component -->
-      <users-list
-          users="app.users"
+      <facets-list
+          facets="app.facets"
           selected="app.selected"
           on-selected="app.selectUser(user)">
-      </users-list>
+      </facets-list>
     </md-sidenav>
 
     <!-- Container #4 -->
     <md-content flex id="content">
       <!-- Custom UserDetails component -->
       <user-details
-          selected="app.selected" >
+          courses="app.courses" >
       </user-details>
     </md-content>
 

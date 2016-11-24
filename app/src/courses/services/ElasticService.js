@@ -58,9 +58,8 @@ function ElasticService($q, $resource) {
             var deferred = $q.defer();
 
             elasticResource.action1(success =>{
-                var data = success.data;
-                console.log(data);
-                deferred.resolve(data);
+                console.log(success);
+                deferred.resolve(success);
             });
             return deferred.promise;
         }

@@ -8,18 +8,17 @@ function AppController(ElasticService, $mdSidenav) {
   var self = this;
 
   self.selected     = null;
-  self.users        = [ ];
-  self.selectUser   = selectUser;
+  self.courses        = [ ];
+  self.facets        = [ ];
   self.toggleList   = toggleUsersList;
 
   // Load all registered users
 
   ElasticService
         .loadAllUsers()
-        .then( function( users ) {
-          self.users    = [].concat(users);
-          console.log(users);
-          self.selected = self.users[0];
+        .then( function( response ) {
+          self.courses    = [].concat(response.data);
+          self.facets    = [].concat(response.facets);
         });
 
   // *********************************

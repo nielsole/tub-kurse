@@ -2,7 +2,7 @@
 
 import ElasticService from 'src/courses/services/ElasticService';
 
-import UsersList from 'src/courses/components/list/UsersList';
+import FacetsList from 'src/courses/components/list/FacetsList';
 import UserDetails from 'src/courses/components/details/UserDetails';
 
 // Define the Angular 'users' module
@@ -10,7 +10,7 @@ import UserDetails from 'src/courses/components/details/UserDetails';
 export default angular
   .module("courses", ['ngMaterial'])
 
-  .component(UsersList.name, UsersList.config)
+  .component(FacetsList.name, FacetsList.config)
   .component(UserDetails.name, UserDetails.config)
 
   .service("ElasticService", ElasticService);
