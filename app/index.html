@@ -16,13 +16,20 @@
 
   <!-- Container #1 (see wireframe) -->
   <md-toolbar layout="row" class="md-toolbar-tools">
-    <md-button class="menu md-icon-button" hide-gt-sm ng-click="app.toggleList()"
+    <md-button class="menu md-icon-button" hide-gt-sm ng-hide="search" ng-click="app.toggleList()"
                aria-label="Show User List">
       <md-icon md-svg-icon="menu"></md-icon>
     </md-button>
-    <h1>Angular Material - Starter App</h1>
-    <div  style="flex: 1 1 auto;"></div>
-    <md-button><md-icon md-svg-icon="search"></md-icon></md-button>
+    <md-button class="back md-icon-button" ng-hide="!search" ng-click="search = !search"
+               aria-label="Show User List">
+      <md-icon md-svg-icon="back"></md-icon>
+    </md-button>
+    <md-input-container ng-hide="!search" style="flex: 1 1 auto;"  >
+      <input type="text" placeholder="Kurssuche" />
+    </md-input-container>
+    <h1 ng-hide="search">Angular Material - Starter App</h1>
+    <div  style="flex: 1 1 auto;" ng-hide="search"></div>
+    <md-button ng-click="search = !search"><md-icon md-svg-icon="search"></md-icon></md-button>
   </md-toolbar>
 
   <!-- Container #2 -->

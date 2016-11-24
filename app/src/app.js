@@ -20,7 +20,8 @@ export default angular.module( 'starter-app', [ 'ngMaterial', 'ngResource', Cour
       .icon("hangouts", "./assets/svg/hangouts.svg", 24)
       .icon("twitter", "./assets/svg/twitter.svg", 24)
       .icon("phone", "./assets/svg/phone.svg", 24)
-      .icon("search", "./assets/svg/ic_search_white_24px.svg", 24);
+      .icon("search", "./assets/svg/ic_search_white_24px.svg", 24)
+      .icon("back", "./assets/svg/ic_arrow_back_white_24px.svg", 24);
 
     $mdThemingProvider.theme('default')
       .primaryPalette('brown')
