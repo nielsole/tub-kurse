@@ -4,11 +4,12 @@ import angular from 'angular';
 import 'angular-animate';
 import 'angular-aria';
 import 'angular-material';
+import 'angular-resource';
 
 import AppController from 'src/AppController';
-import Users from 'src/users/Users';
+import Courses from 'src/courses/Courses';
 
-export default angular.module( 'starter-app', [ 'ngMaterial', Users.name ] )
+export default angular.module( 'starter-app', [ 'ngMaterial', 'ngResource', Courses.name ] )
   .config(($mdIconProvider, $mdThemingProvider) => {
     // Register the user `avatar` icons
     $mdIconProvider

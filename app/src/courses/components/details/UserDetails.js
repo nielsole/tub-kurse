@@ -4,7 +4,7 @@ export default {
   name : 'userDetails',
   config : {
     bindings         : {  selected: '<' },
-    templateUrl      : 'src/users/components/details/UserDetails.html',
+    templateUrl      : 'src/courses/components/details/CourseDetails.html',
     controller       : [ '$mdBottomSheet', '$log', UserDetailsController ]
   }
 };
