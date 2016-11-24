@@ -1,12 +1,13 @@
 <!-- NOTE: @see ngClick for how to pass data selection to outside expression -->
 <md-list>
   <div ng-repeat="facet in $ctrl.facets">
-    <h3 md-subheader>{{facet.field}}</h3>
-          <md-list-item ng-repeat="(something,bucket) in facet.buckets">
-            <p ng-repeat="(name,count) in bucket">
-              <input type="checkbox" />{{name}}({{count}})
-            </p>
+    <h3 md-subheader ng-click="show = !show;">{{facet.field}}</h3>
+          <md-list-item ng-show="!show" ng-repeat="(something,bucket) in facet.buckets">
+            <div ng-repeat="(name,count) in bucket">
+              <md-checkbox >
+                {{name}}({{count}})
+              </md-checkbox>
+            </div>
           </md-list-item>
-      <!--</md-button>-->
   </div>
 </md-list>

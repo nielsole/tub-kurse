@@ -40,12 +40,12 @@ function ElasticService($q, $resource) {
         }
     ];
     var elasticResource = $resource("https://stappsbe01.innocampus.tu-berlin.de/search", {}, {
-        action1: {method:'POST',
-        headers:
-        {
-            'X-StApps-Version': '0.8.1',
-        }},
-        data: {"course":{"filter":["uid:\"177824\"","available:availabilityStarts:availabilityEnds"]},"dates":{"size":30,"type":"Date","filter":["superEvent.uid:\"177824\"","available:availabilityStarts:availabilityEnds"]}}
+        action1: {
+            method: 'POST',
+            headers: {
+                'X-StApps-Version': '0.8.1'
+            }
+        }
     });
 
     // Promise-based API
@@ -56,8 +56,8 @@ function ElasticService($q, $resource) {
         },*/
         loadAllUsers: function(){
             var deferred = $q.defer();
-
-            elasticResource.action1(success =>{
+            var query = {"size":30,"query":"*","filter":["type:\"Event\"","available:availabilityStarts:availabilityEnds"]};
+            elasticResource.action1(query, success =>{
                 console.log(success);
                 deferred.resolve(success);
             });
