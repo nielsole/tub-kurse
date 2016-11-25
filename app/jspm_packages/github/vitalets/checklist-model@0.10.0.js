@@ -1,0 +1,1 @@
+module.exports = require("github:vitalets/checklist-model@0.10.0/checklist-model.js");
