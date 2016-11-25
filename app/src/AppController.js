@@ -11,11 +11,13 @@ function AppController(ElasticService, $mdSidenav) {
   self.courses        = [ ];
   self.facets        = [ ];
   self.toggleList   = toggleUsersList;
+  self.query   = query;
+  this.searchString = "";
 
   // Load all registered users
 
   ElasticService
-        .loadAllUsers()
+        .loadQuery()
         .then( function( response ) {
           self.courses    = [].concat(response.data);
           self.facets    = [].concat(response.facets);
@@ -30,6 +32,17 @@ function AppController(ElasticService, $mdSidenav) {
    */
   function toggleUsersList() {
     $mdSidenav('left').toggle();
+  }
+
+  function query() {
+    console.log("Hello");
+    var query = this.searchString;
+    console.log(self.selectedFacets);
+    ElasticService.loadQuery(self.selectedFacets, query)
+        .then(function(response){
+      self.courses = [].concat(response.data);
+      self.facets = [].concat(response.facets);
+    });
   }
 
   /**
