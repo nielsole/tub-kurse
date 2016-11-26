@@ -13,6 +13,7 @@ System.config({
     "angular": "github:angular/bower-angular@1.5.8",
     "angular-animate": "github:angular/bower-angular-animate@1.5.8",
     "angular-aria": "github:angular/bower-angular-aria@1.5.8",
+    "angular-checklist-model": "github:vitalets/checklist-model@0.10.0",
     "angular-material": "github:angular/bower-material@master",
     "angular-messages": "github:angular/bower-angular-messages@1.5.8",
     "angular-mocks": "github:angular/bower-angular-mocks@1.5.8",
@@ -40,6 +41,9 @@ System.config({
       "angular-aria": "github:angular/bower-angular-aria@1.5.8",
       "angular-messages": "github:angular/bower-angular-messages@1.5.8",
       "css": "github:systemjs/plugin-css@0.1.32"
+    },
+    "github:vitalets/checklist-model@0.10.0": {
+      "angular": "github:angular/bower-angular@1.5.8"
     }
   }
 });

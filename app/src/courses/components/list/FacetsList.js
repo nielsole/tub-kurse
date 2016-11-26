@@ -5,6 +5,6 @@ export default {
   name : 'facetsList',
   config : {
     bindings         : {  facets: '<', selected : '<', showDetails : '&onSelected' },
-    templateUrl      : 'src/courses/components/list/UsersList.html'
+    templateUrl      : 'src/courses/components/list/FacetsList.html'
   }
 };

@@ -5,11 +5,12 @@ import 'angular-animate';
 import 'angular-aria';
 import 'angular-material';
 import 'angular-resource';
+import 'angular-checklist-model';
 
 import AppController from 'src/AppController';
 import Courses from 'src/courses/Courses';
 
-export default angular.module( 'starter-app', [ 'ngMaterial', 'ngResource', Courses.name ] )
+export default angular.module( 'starter-app', [ 'ngMaterial', 'ngResource', 'checklist-model', Courses.name ] )
   .config(($mdIconProvider, $mdThemingProvider) => {
     // Register the user `avatar` icons
     $mdIconProvider
