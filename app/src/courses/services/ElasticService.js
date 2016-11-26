@@ -16,17 +16,27 @@ function ElasticService($q, $resource) {
         }
     });
 
+    var serializeFacet = function(type, values){
+        var quotedValues = values.map((auspraegung)=>{
+            type = type.slice(type.indexOf(".")+1,type.length);
+            //TODO This query can be hijacked. Add escaping for JSON.
+            return type + ":\"" + auspraegung + "\"";
+        });
+        return quotedValues.join(" OR ");
+    };
     // Promise-based API
     return {
-        /*loadAllUsers: function() {
-            // Simulate async nature of real remote calls
-            return $q.when(users);
-        },*/
+
         loadQuery: function(facets, queryString){
+            var facetsForQuery=["type:\"Event\"","available:availabilityStarts:availabilityEnds"];
+            if (facets != null && queryString != null){
+                Object.keys(facets).forEach((facetName)=>{
+                   facetsForQuery.push(serializeFacet(facetName,facets[facetName]));
+                });
+            }
             var deferred = $q.defer();
-            var query = {"size":30,"query":queryString||"*","filter":["type:\"Event\"","available:availabilityStarts:availabilityEnds"]};
+            var query = {"size":30,"query":queryString||"*","filter":facetsForQuery};
             elasticResource.action1(query, success =>{
-                console.log(success);
                 var ret = {
                     facets: [],
                     data: success.data
@@ -49,7 +59,7 @@ function ElasticService($q, $resource) {
                     });
                 });
 
-                console.log(ret);
+                //console.log(ret);
                 deferred.resolve(ret);
             });
             return deferred.promise;

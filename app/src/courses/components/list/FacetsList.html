@@ -3,9 +3,9 @@
   <div ng-repeat="facet in $ctrl.facets">
     <h3 md-subheader ng-click="show = !show;">{{facet.name}}</h3>
       <div ng-show="!show">
-          <md-list-item ng-repeat="bucket in ::facet.buckets">
-              <div>
-                  <md-checkbox checklist-model="$ctrl.selectedFacets[facet.name]" checklist-value="bucket.name">
+          <md-list-item ng-repeat="bucket in facet.buckets">
+              <div >
+                  <md-checkbox ng-model="bucket.active">
                       {{::bucket.name}}({{::bucket.count}})
                   </md-checkbox>
               </div>
