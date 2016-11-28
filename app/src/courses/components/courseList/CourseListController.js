@@ -1,4 +1,4 @@
-class UserDetailsController  {
+class CourseListController  {
 
   /**
    * Constructor
@@ -20,7 +20,7 @@ class UserDetailsController  {
 
     $mdBottomSheet.show({
       parent: angular.element(document. getElementById('content')),
-      templateUrl: 'src/courses/components/details/ContactSheet.html',
+      templateUrl: 'src/courses/components/courseList/ContactSheet.html',
       controller: [ '$mdBottomSheet', UserSheetController],
       controllerAs: "$ctrl",
       bindToController : true
