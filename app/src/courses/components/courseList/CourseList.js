@@ -5,6 +5,6 @@ export default {
   config : {
     bindings         : {  courses: '<' },
     templateUrl      : 'src/courses/components/courseList/CourseListItem.html',
-    controller       : [ '$mdBottomSheet', '$log', CourseListController ]
+    controller       : [ '$mdBottomSheet', '$log', '$scope', CourseListController ]
   }
 };

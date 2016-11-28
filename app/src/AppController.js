@@ -61,7 +61,7 @@ function AppController(ElasticService, $mdSidenav) {
     }
   }
 
-  function query() {
+  function query(query) {
     self.selectedFacets = {};
     self.facets.forEach((facet)=>{
       facet.buckets.forEach((bucket)=>{
@@ -71,7 +71,7 @@ function AppController(ElasticService, $mdSidenav) {
       })
     });
     console.log(self.selectedFacets);
-    var query = this.searchString;
+    //var query = this.searchString;
     //console.log(self.selectedFacets);
     ElasticService.loadQuery(self.selectedFacets, query)
         .then(function(response){

@@ -1,4 +1,4 @@
-class CourseListController  {
+export default class CourseListController  {
 
   /**
    * Constructor
@@ -6,7 +6,7 @@ class CourseListController  {
    * @param $mdBottomSheet
    * @param $log
    */
-  constructor($mdBottomSheet, $log) {
+  constructor($mdBottomSheet, $log, $scope) {
     this.$mdBottomSheet = $mdBottomSheet;
     this.$log = $log;
   }
@@ -46,5 +46,3 @@ class CourseListController  {
   }
 
 }
-export default UserDetailsController;
-

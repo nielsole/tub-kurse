@@ -1,1 +1,11 @@
 <!-- Container #1 (see wireframe) -->
+<md-toolbar layout="row" class="md-toolbar-tools">
+    <md-button class="menu md-icon-button" hide-gt-sm ng-click="$ctrl.toggleList()"
+               aria-label="Show User List">
+        <md-icon md-svg-icon="menu"></md-icon>
+    </md-button>
+    <md-input-container style="flex: 1 1 auto;"  >
+        <input type="text" ng-model-options='{ debounce: 1000 }' ng-change="$ctrl.queryAction({query:$ctrl.searchString})" ng-model="$ctrl.searchString" placeholder="Kurssuche" />
+    </md-input-container>
+    <md-button ng-click="queryAction($ctrl.searchString)"><md-icon md-svg-icon="search"></md-icon></md-button>
+</md-toolbar>
