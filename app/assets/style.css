@@ -1,0 +1,20 @@
+.facet-search{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+}
+.flex-wrap{
+    flex-wrap: wrap;
+    width: 100%;
+}
+.facet-search-button{
+    display: block;
+    min-width: initial !important;
+    width: initial !important;
+}
+.facet-search-field{
+    width: 100%;
+}
+.facet-search-name-container{
+}

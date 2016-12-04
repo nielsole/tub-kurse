@@ -1,15 +1,44 @@
 <!-- NOTE: @see ngClick for how to pass data selection to outside expression -->
 <md-list>
   <div ng-repeat="facet in $ctrl.facets">
-    <h3 md-subheader ng-click="show = !show;">{{facet.name}}</h3>
-      <div ng-show="!show">
-          <md-list-item ng-repeat="bucket in facet.buckets">
+      <md-list-item ng-click="facet.show = !facet.show;">
+          <div class="flex-wrap">
+              <div class="facet-search">
+                  <div class="facet-search-name-container">
+                      <h3 class="facet-search-name-item" style="margin: auto">{{facet.name}}</h3>
+                  </div>
+                  <md-button class="facet-search-button" ng-click="$ctrl.selected=facet"><md-icon md-svg-icon="search"></md-icon></md-button>
+              </div>
+              <div style="width: 100%" ng-show="$ctrl.selected==facet">
+                  <md-input-container class="facet-search-field">
+                      <input type="text" ng-model-options='{ debounce: 500 }' ng-change="$ctrl.filterFacets(facet.name, $ctrl.searchString)" ng-model="$ctrl.searchString" placeholder="Filtern" />
+                  </md-input-container>
+              </div>
+
+          </div>
+      </md-list-item>
+      <!-- Selected Buckets -->
+      <div ng-show="facet.show">
+          <md-list-item ng-repeat="bucket in $ctrl.selectedFacets[facet.name]">
               <div >
-                  <md-checkbox ng-model="bucket.active">
+                  <md-checkbox ng-model="bucket.active" ng-change="$ctrl.setFacetBucketFilter(facet.name, bucket.name,false)">
+                      {{::bucket.name}}({{::bucket.count}})
+                  </md-checkbox>
+              </div>
+          </md-list-item>
+      </div>
+      <!-- All buckets -->
+      <div ng-show="facet.show">
+          <md-list-item ng-repeat="bucket in facet.buckets | filter: $ctrl.filter">
+              <div >
+                  <md-checkbox ng-model="bucket.active" ng-change="$ctrl.setFacetBucketFilter(facet.name, bucket.name,true)">
                       {{::bucket.name}}({{::bucket.count}})
                   </md-checkbox>
               </div>
           </md-list-item>
       </div>
   </div>
+    <md-list-item>
+        <md-button ng-click="$ctrl.toggleUserList()"><h1>Hallo</h1></md-button>
+    </md-list-item>
 </md-list>

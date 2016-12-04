@@ -17,6 +17,7 @@ function ElasticService($q, $resource) {
     });
 
     var serializeFacet = function(type, values){
+        console.log(values);
         var quotedValues = values.map((auspraegung)=>{
             type = type.slice(type.indexOf(".")+1,type.length);
             //TODO This query can be hijacked. Add escaping for JSON.

@@ -12,14 +12,16 @@ function AppController(ElasticService, $mdSidenav) {
   self.facets        = [ ];
   self.toggleList   = toggleUsersList;
   self.setFacetBucketFilter   = setFacetBucketFilter;
+  self.filterSelectedFacets = isInSelectedFacets;
   self.query   = query;
+  self.selectedFacets = {};
+    //'Event.subType': ["hallo"]
   self.searchString = "";
   /*
   {
   "*facetName*": ["activeValue1", "activeValue2"]
   }
    */
-  self.selectedFacets = {};
 
   // Load all registered users
 
@@ -28,6 +30,7 @@ function AppController(ElasticService, $mdSidenav) {
         .then( function( response ) {
           self.courses    = [].concat(response.data);
           self.facets    = [].concat(response.facets);
+          console.log(self.facets);
         });
 
   // *********************************
@@ -41,6 +44,7 @@ function AppController(ElasticService, $mdSidenav) {
     $mdSidenav('left').toggle();
   }
 
+  //Adds or removes a bucket from a facet
   function setFacetBucketFilter(facetName, bucketName, active){
     console.log(self.selectedFacets);
     var facet;
@@ -50,29 +54,33 @@ function AppController(ElasticService, $mdSidenav) {
       facet = [];
       self.selectedFacets[facetName] = facet;
     }
+    var ret = false;
+
     if (active){
-      if(!(bucketName in facet)){
-        facet.push(bucketName);
+      if (!(bucketName in facet)){
+        facet.push({"name": bucketName, "count":0});
       }
     }else {
       if(bucketName in facet){
         facet.remove(bucketName);
       }
     }
+    console.log(self.selectedFacets);
+  }
+
+  function isInSelectedFacets(bucketname){
+    var ret = false;
+    Object.values(self.selectedFacets).forEach(function(selectedFacet){
+      if (selectedFacet.name == bucketname){
+        ret = true;
+      }
+    });
+    return ret;
   }
 
   function query(query) {
-    self.selectedFacets = {};
-    self.facets.forEach((facet)=>{
-      facet.buckets.forEach((bucket)=>{
-        if(bucket.hasOwnProperty("active")){
-          setFacetBucketFilter(facet.name, bucket.name,bucket.active);
-        }
-      })
-    });
     console.log(self.selectedFacets);
     //var query = this.searchString;
-    //console.log(self.selectedFacets);
     ElasticService.loadQuery(self.selectedFacets, query)
         .then(function(response){
       self.courses = [].concat(response.data);
